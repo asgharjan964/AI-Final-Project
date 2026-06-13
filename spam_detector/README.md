@@ -39,9 +39,7 @@ python app.py
 
 Open your browser at: **http://localhost:5000**
 
----
 
-## 📁 Project Structure
 
 ```
 spam_detector/
@@ -76,9 +74,8 @@ spam_detector/
         └── class_distribution.png
 ```
 
----
 
-## 🧠 ML Pipeline
+
 
 | Step | Details |
 |------|---------|
@@ -89,7 +86,6 @@ spam_detector/
 | **Algorithm** | Logistic Regression (C=1.0, L2, max_iter=1000) |
 | **Serialisation** | Joblib (model + vectorizer saved as `.pkl`) |
 
-### Evaluation Metrics
 
 | Metric | Score |
 |--------|-------|
@@ -98,9 +94,7 @@ spam_detector/
 | Recall    | 100% |
 | F1-Score  | 100% |
 
----
 
-## 🌐 Web Pages
 
 | Route | Description |
 |-------|-------------|
@@ -110,44 +104,8 @@ spam_detector/
 | `/about`     | About page — technical details, pipeline, challenges |
 | `/api/predict` | REST endpoint (POST JSON `{subject, body}`) |
 
----
 
-## 📡 API Reference
 
-**POST** `/api/predict`
-
-**Request body:**
-```json
-{
-  "subject": "Congratulations! You won a prize",
-  "body": "Click here to claim your reward immediately..."
-}
-```
-
-**Response:**
-```json
-{
-  "is_spam": true,
-  "label": "Spam",
-  "spam_probability": 98.7,
-  "ham_probability": 1.3,
-  "confidence_label": "Very High Confidence",
-  "tip": "This email shows strong indicators of spam..."
-}
-```
-
----
-
-## 📚 AI Concepts Applied
-
-- **Supervised Classification** — Logistic Regression
-- **Text Preprocessing** — normalisation pipeline
-- **Feature Engineering** — TF-IDF with n-gram range
-- **Model Evaluation** — Accuracy, Precision, Recall, F1, Confusion Matrix
-- **Model Persistence** — Joblib serialisation
-- **Web Deployment** — Flask REST API + responsive HTML/CSS/JS frontend
-
----
 
 ## 👩‍🏫 Submission Details
 
