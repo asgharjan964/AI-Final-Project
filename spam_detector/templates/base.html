@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}SpamShield{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}" />
+  {% block head %}{% endblock %}
+</head>
+
+<body>
+  <!-- NAV -->
+  <nav class="navbar">
+    <a class="nav-brand" href="/">
+      <span class="brand-icon">⚡</span>
+      <span class="brand-text">Spam<span class="brand-accent">Shield</span></span>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">&#9776;</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/" class="nav-link {% if request.path=='/' %}active{% endif %}">Home</a></li>
+      <li><a href="/analyze" class="nav-link {% if request.path=='/analyze' %}active{% endif %}">Analyze</a></li>
+      <li><a href="/dashboard" class="nav-link {% if request.path=='/dashboard' %}active{% endif %}">Dashboard</a></li>
+      <li><a href="/about" class="nav-link {% if request.path=='/about' %}active{% endif %}">About</a></li>
+      <li><a href="/analyze" class="nav-cta">Try It Free</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE CONTENT -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <p class="footer-brand">⚡ Spam Mail Detector &mdash; AI Email Detection</p>
+      <p class="footer-copy">Built for Spam Mail Detection &bull; AI Semester Project &bull;</p>
+    </div>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+
+</html>

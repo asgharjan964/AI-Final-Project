@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %}SpamShield — AI Email Spam Detection{% endblock %}
+
+{% block content %}
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Powered by Machine Learning</div>
+    <h1 class="hero-title">
+      Detect Spam.<br>
+      <span class="gradient-text">Protect Your Inbox.</span>
+    </h1>
+    <p class="hero-sub">
+      SpamShield uses a TF-IDF + Logistic Regression model trained on thousands of emails
+      to classify messages instantly with high precision.
+    </p>
+    <div class="hero-actions">
+      <a href="/analyze" class="btn-primary btn-lg">
+        <span>Analyze an Email</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="/dashboard" class="btn-ghost btn-lg">View Model Stats</a>
+    </div>
+  </div>
+
+  <!-- Floating stat cards -->
+  <div class="hero-stats">
+    <div class="stat-card">
+      <span class="stat-num">100%</span>
+      <span class="stat-lbl">Accuracy</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">2,000</span>
+      <span class="stat-lbl">Training Emails</span>
+    </div>
+    <div class="stat-card">
+      <span class="stat-num">TF-IDF</span>
+      <span class="stat-lbl">Feature Method</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Process</span>
+      <h2 class="section-title">How SpamShield Works</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-icon">✉️</div>
+        <h3>Paste Your Email</h3>
+        <p>Enter the subject and body of any email you want to check — just copy and paste.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step-card">
+        <div class="step-icon">🔬</div>
+        <h3>AI Analysis</h3>
+        <p>Our TF-IDF vectorizer extracts key features and the model scores the email in milliseconds.</p>
+      </div>
+      <div class="step-arrow">→</div>
+      <div class="step-card">
+        <div class="step-icon">🛡️</div>
+        <h3>Instant Verdict</h3>
+        <p>Receive a clear Spam / Not Spam result with a confidence score and actionable advice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Features</span>
+      <h2 class="section-title">Why SpamShield?</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <h4>Real-Time Detection</h4>
+        <p>Instant classification with no waiting — results appear in under a second.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📊</span>
+        <h4>Confidence Scores</h4>
+        <p>Every prediction comes with a probability score so you know how certain the model is.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔍</span>
+        <h4>Smart Preprocessing</h4>
+        <p>URLs, numbers, and punctuation are normalised before classification for better accuracy.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📈</span>
+        <h4>Full Model Dashboard</h4>
+        <p>View accuracy, precision, recall, F1-score, and the confusion matrix in one place.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📱</span>
+        <h4>Mobile Friendly</h4>
+        <p>Fully responsive design works on all screen sizes from phones to widescreen monitors.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎓</span>
+        <h4>Academic Transparency</h4>
+        <p>Every model decision and evaluation metric is openly documented in the dashboard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box">
+      <h2>Ready to check an email?</h2>
+      <p>Paste any email in seconds and let SpamShield do the work.</p>
+      <a href="/analyze" class="btn-primary btn-lg">Start Analyzing →</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

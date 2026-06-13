@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}About — SpamShield{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-title">About <span class="gradient-text">Spam Mail Detector</span></h1>
+    <p class="page-sub">An academic machine learning project Semester Spring 2026.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container about-layout">
+
+    <div class="card">
+      <h2>Project Overview</h2>
+      <p>Spam Mail Detector is an AI-powered system developed as a semester
+        project for Artificial Intelligence. It demonstrates a complete
+        machine learning pipeline, including data preprocessing,
+        feature extraction, model training, evaluation, and deployment. The project is integrated with a simple and
+        interactive web application that allows users to easily check whether an email is spam or not in real time.</p>
+    </div>
+
+    <div class="card">
+      <h2>Technical Stack</h2>
+      <div class="tech-grid">
+        <div class="tech-item"><span class="tech-icon">🐍</span><span>Python 3</span></div>
+        <div class="tech-item"><span class="tech-icon">🔬</span><span>Scikit-learn</span></div>
+        <div class="tech-item"><span class="tech-icon">🌐</span><span>Flask</span></div>
+        <div class="tech-item"><span class="tech-icon">🗂️</span><span>Pandas / NumPy</span></div>
+        <div class="tech-item"><span class="tech-icon">📊</span><span>Matplotlib / Seaborn</span></div>
+        <div class="tech-item"><span class="tech-icon">💾</span><span>Joblib (Model Serialisation)</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>AI Concepts Applied</h2>
+      <ul class="concept-list">
+        <li><strong>Text Preprocessing</strong> — Lowercasing, URL normalisation, punctuation and digit removal.</li>
+        <li><strong>Feature Extraction</strong> — TF-IDF vectoriser with uni-gram and bi-gram features (max 5,000
+          features), sublinear TF scaling.</li>
+        <li><strong>Supervised Classification</strong> — Logistic Regression with L2 regularisation (C=1.0).</li>
+        <li><strong>Model Evaluation</strong> — Accuracy, Precision, Recall, F1-Score, and Confusion Matrix on a
+          held-out 20% test set.</li>
+        <li><strong>Deployment</strong> — REST API via Flask served to a responsive HTML/CSS/JS front end.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Pipeline</h2>
+      <ol class="pipeline-list">
+        <li>Raw email CSV loaded → subject + body combined into single text field.</li>
+        <li>Text cleaned: lowercase, URL tokens, digit tokens, punctuation stripped.</li>
+        <li>80/20 stratified train/test split to preserve class balance.</li>
+        <li>TF-IDF vectoriser fit on training data only — applied to test data.</li>
+        <li>Logistic Regression trained; model artefacts persisted with Joblib.</li>
+        <li>Evaluation charts generated and saved as static images.</li>
+        <li>Flask app loads model at start-up; serves predictions via <code>/api/predict</code>.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Challenges &amp; Solutions</h2>
+      <div class="challenge-grid">
+        <div class="challenge-item">
+          <span class="ch-label">Challenge</span>
+          <p>Avoiding data leakage between training and inference preprocessing.</p>
+          <span class="ch-label sol-label">Solution</span>
+          <p>The TF-IDF vectoriser is fit <em>only</em> on training data; the same fitted object is serialised and
+            reused at inference time.</p>
+        </div>
+        <div class="challenge-item">
+          <span class="ch-label">Challenge</span>
+          <p>Providing meaningful confidence instead of a binary label.</p>
+          <span class="ch-label sol-label">Solution</span>
+          <p>Logistic Regression's <code>predict_proba</code> is exposed directly so users see exact spam / ham
+            probabilities.</p>
+        </div>
+        <div class="challenge-item">
+          <span class="ch-label">Challenge</span>
+          <p>Making evaluation results visible to non-technical users.</p>
+          <span class="ch-label sol-label">Solution</span>
+          <p>A dedicated dashboard page renders all metrics, charts, and a labelled confusion matrix in plain English.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

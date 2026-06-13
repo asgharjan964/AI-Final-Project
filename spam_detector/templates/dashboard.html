@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %}Model Dashboard — SpamShield{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-title">Model <span class="gradient-text">Dashboard</span></h1>
+    <p class="page-sub">Full evaluation metrics for the trained spam detection model.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- KPI Row -->
+    <div class="kpi-grid">
+      <div class="kpi-card kpi-green">
+        <span class="kpi-label">Accuracy</span>
+        <span class="kpi-value">{{ metrics.accuracy }}%</span>
+      </div>
+      <div class="kpi-card kpi-blue">
+        <span class="kpi-label">Precision</span>
+        <span class="kpi-value">{{ metrics.precision }}%</span>
+      </div>
+      <div class="kpi-card kpi-orange">
+        <span class="kpi-label">Recall</span>
+        <span class="kpi-value">{{ metrics.recall }}%</span>
+      </div>
+      <div class="kpi-card kpi-purple">
+        <span class="kpi-label">F1-Score</span>
+        <span class="kpi-value">{{ metrics.f1_score }}%</span>
+      </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="charts-grid">
+      <div class="card">
+        <h3 class="chart-title">Performance Metrics</h3>
+        <img src="{{ url_for('static', filename='images/metrics_bar.png') }}"
+             alt="Metrics bar chart" class="chart-img" />
+      </div>
+      <div class="card">
+        <h3 class="chart-title">Confusion Matrix</h3>
+        <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}"
+             alt="Confusion matrix" class="chart-img" />
+      </div>
+      <div class="card">
+        <h3 class="chart-title">Class Distribution</h3>
+        <img src="{{ url_for('static', filename='images/class_distribution.png') }}"
+             alt="Class distribution" class="chart-img" />
+      </div>
+    </div>
+
+    <!-- Dataset info -->
+    <div class="card info-card">
+      <h3 class="chart-title">Dataset &amp; Training Details</h3>
+      <div class="info-grid">
+        <div class="info-item">
+          <span class="info-label">Total Samples</span>
+          <span class="info-val">{{ metrics.total_samples }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Training Set</span>
+          <span class="info-val">{{ metrics.train_size }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Test Set</span>
+          <span class="info-val">{{ metrics.test_size }}</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Train / Test Split</span>
+          <span class="info-val">80% / 20%</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Algorithm</span>
+          <span class="info-val">Logistic Regression</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Feature Extraction</span>
+          <span class="info-val">TF-IDF (n-gram 1–2)</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Max Features</span>
+          <span class="info-val">5,000</span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">Regularisation (C)</span>
+          <span class="info-val">1.0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confusion matrix table -->
+    <div class="card">
+      <h3 class="chart-title">Confusion Matrix (Counts)</h3>
+      <div class="cm-table-wrap">
+        <table class="cm-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Predicted: Ham</th>
+              <th>Predicted: Spam</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>Actual: Ham</th>
+              <td class="cm-tn">{{ metrics.confusion_matrix[0][0] }}</td>
+              <td class="cm-fp">{{ metrics.confusion_matrix[0][1] }}</td>
+            </tr>
+            <tr>
+              <th>Actual: Spam</th>
+              <td class="cm-fn">{{ metrics.confusion_matrix[1][0] }}</td>
+              <td class="cm-tp">{{ metrics.confusion_matrix[1][1] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="cm-legend">
+        <span class="legend-item cm-tn-c">True Negative (TN)</span>
+        <span class="legend-item cm-fp-c">False Positive (FP)</span>
+        <span class="legend-item cm-fn-c">False Negative (FN)</span>
+        <span class="legend-item cm-tp-c">True Positive (TP)</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block title %}Analyze Email — SpamShield{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+  <div class="container">
+    <h1 class="page-title">Email <span class="gradient-text">Analyzer</span></h1>
+    <p class="page-sub">Paste your email below and our AI will classify it instantly.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="analyzer-layout">
+
+      <!-- INPUT CARD -->
+      <div class="card" id="inputCard">
+        <div class="card-header">
+          <span class="card-icon">✉️</span>
+          <h2 class="card-title">Email Input</h2>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="emailSubject">Subject Line <span class="form-optional">(optional)</span></label>
+          <input type="text" id="emailSubject" class="form-input" placeholder="e.g. Congratulations! You've won a prize…" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="emailBody">Email Body <span class="form-required">*</span></label>
+          <textarea id="emailBody" class="form-textarea" rows="10"
+            placeholder="Paste the full email body here…"></textarea>
+          <div class="char-counter"><span id="charCount">0</span> characters</div>
+        </div>
+        <div id="formError" class="form-error hidden">⚠ Please enter the email body before analyzing.</div>
+        <div class="form-actions">
+          <button id="analyzeBtn" class="btn-primary btn-lg btn-full" onclick="analyzeEmail()">
+            <span id="btnText">🔍 Check for Spam</span>
+            <span id="btnSpinner" class="spinner hidden"></span>
+          </button>
+          <button class="btn-ghost btn-lg btn-full" onclick="clearForm()">Clear</button>
+        </div>
+
+        <!-- Sample emails -->
+        <div class="samples-section">
+          <p class="samples-label">Try a sample:</p>
+          <div class="samples-row">
+            <button class="sample-btn sample-spam" onclick="loadSample('spam')">🚨 Spam Example</button>
+            <button class="sample-btn sample-ham"  onclick="loadSample('ham')">✅ Legit Example</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULT CARD -->
+      <div class="card result-card" id="resultCard">
+        <div id="resultPlaceholder" class="result-placeholder">
+          <span class="placeholder-icon">🛡️</span>
+          <p>Your result will appear here after analysis.</p>
+        </div>
+
+        <div id="resultContent" class="hidden">
+          <!-- Verdict banner -->
+          <div id="verdictBanner" class="verdict-banner">
+            <span id="verdictIcon" class="verdict-icon"></span>
+            <span id="verdictLabel" class="verdict-label"></span>
+          </div>
+
+          <!-- Confidence gauge -->
+          <div class="confidence-section">
+            <div class="conf-row">
+              <span class="conf-title">Spam Probability</span>
+              <span id="confValue" class="conf-value"></span>
+            </div>
+            <div class="gauge-track">
+              <div id="gaugeBar" class="gauge-bar"></div>
+            </div>
+            <div class="conf-labels-row">
+              <span>Safe</span><span id="confLabel" class="conf-badge"></span><span>Spam</span>
+            </div>
+          </div>
+
+          <!-- Ham vs Spam breakdown -->
+          <div class="prob-breakdown">
+            <div class="prob-item prob-ham">
+              <span class="prob-label">✅ Not Spam</span>
+              <span id="hamProb" class="prob-val"></span>
+            </div>
+            <div class="prob-item prob-spam">
+              <span class="prob-label">🚨 Spam</span>
+              <span id="spamProb" class="prob-val"></span>
+            </div>
+          </div>
+
+          <!-- Tip box -->
+          <div id="tipBox" class="tip-box">
+            <p id="tipText"></p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /analyzer-layout -->
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/analyze.js') }}"></script>
+{% endblock %}
