@@ -1,6 +1,6 @@
 # ⚡ SpamShield — AI Email Spam Detection
 
-> **Sukkur IBA University** | Department of Computer Science | AI Semester Project | Spring 2026
+> **Sukkur IBA University** | Department of Computer Science | AI 6th Semester FInal Project | Instructor Dr Ismail Mangrio
 
 A full-stack machine learning web application that classifies emails as **Spam** or **Not Spam** in real time using TF-IDF feature extraction and Logistic Regression.
 
@@ -14,13 +14,13 @@ A full-stack machine learning web application that classifies emails as **Spam**
 
 ### 2. Install dependencies
 
-```bash
+```
 pip install -r requirements.txt
 ```
 
 ### 3. Train the model *(run once)*
 
-```bash
+```
 python train_model.py
 ```
 
@@ -33,7 +33,7 @@ This will:
 
 ### 4. Start the web application
 
-```bash
+```
 python app.py
 ```
 
@@ -104,12 +104,3 @@ spam_detector/
 | `/about`     | About page — technical details, pipeline, challenges |
 | `/api/predict` | REST endpoint (POST JSON `{subject, body}`) |
 
-
-
-
-## 👩‍🏫 Submission Details
-
-- **Course:** Artificial Intelligence
-- **Institution:** Sukkur IBA University
-- **Semester:** Spring 2026
-- **Deliverable:** Implementation + GUI (4 Marks) | Report (1 Mark) | Presentation (4 Marks)
