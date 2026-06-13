@@ -41,32 +41,32 @@ Open your browser at: **http://localhost:5000**
 
 ```
 spam_detector/
-├── app.py                  # Flask backend + REST API
-├── train_model.py          # ML pipeline (preprocessing → training → evaluation)
-├── requirements.txt        # Python dependencies
-├── README.md               # This file
+├── app.py                  
+├── train_model.py          
+├── requirements.txt        
+├── README.md               
 │
 ├── data/
-│   └── emails.csv          # Dataset (2000 labelled emails)
+│   └── emails.csv          
 │
 ├── model/
-│   ├── spam_model.pkl      # Trained Logistic Regression model
-│   ├── vectorizer.pkl      # Fitted TF-IDF vectorizer
-│   └── metrics.json        # Evaluation metrics (read by dashboard)
+│   ├── spam_model.pkl      
+│   ├── vectorizer.pkl      
+│   └── metrics.json       
 │
 ├── templates/
-│   ├── base.html           # Shared layout (nav + footer)
-│   ├── index.html          # Home page
-│   ├── analyze.html        # Email analyzer page
-│   ├── dashboard.html      # Model metrics dashboard
-│   └── about.html          # Project info page
+│   ├── base.html           
+│   ├── index.html          
+│   ├── analyze.html        
+│   ├── dashboard.html      
+│   └── about.html          
 │
 └── static/
-    ├── css/main.css        # Full stylesheet
+    ├── css/main.css        
     ├── js/
-    │   ├── main.js         # Global JS (nav toggle)
-    │   └── analyze.js      # Analyzer logic (API call + result rendering)
-    └── images/             # Generated evaluation charts (PNG)
+    │   ├── main.js         
+    │   └── analyze.js      
+    └── images/             
         ├── confusion_matrix.png
         ├── metrics_bar.png
         └── class_distribution.png
