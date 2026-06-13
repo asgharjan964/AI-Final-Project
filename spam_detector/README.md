@@ -14,18 +14,17 @@ A full-stack machine learning web application that classifies emails as **Spam**
 
 ### 2. Install dependencies
 
-```
 pip install -r requirements.txt
-```
+
 
 ### 3. Train the model *(run once)*
 
-```
+
 python train_model.py
-```
+
 
 This will:
-- Load and preprocess `data/emails.csv`
+- Load and preprocess `emails.csv`
 - Train and evaluate the Logistic Regression model
 - Save `model/spam_model.pkl` and `model/vectorizer.pkl`
 - Save evaluation charts to `static/images/`
@@ -33,9 +32,8 @@ This will:
 
 ### 4. Start the web application
 
-```
 python app.py
-```
+
 
 Open your browser at: **http://localhost:5000**
 
